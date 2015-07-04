@@ -49,9 +49,10 @@ gem 'devise'
 # Cancancan for ability
 gem 'cancancan', '~> 1.10'
 
-# For Heroku
-gem 'rails_12factor'
-
+group :production do
+	# For Heroku
+	gem 'rails_12factor'
+end
 
 
 group :development, :test do
