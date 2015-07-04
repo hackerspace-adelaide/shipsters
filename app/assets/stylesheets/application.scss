@@ -21,3 +21,11 @@
 a:visited {
 	color: inherit;
 }
+
+.navbar-brand {
+	position: relative;
+	top: -10px;
+	-ms-transform: rotate(-15deg); /* IE 9 */
+  -webkit-transform: rotate(-15deg); /* Chrome, Safari, Opera */
+  transform: rotate(-15deg);
+}
