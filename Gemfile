@@ -36,6 +36,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootstrap-sass-extras'
 
+# Nokogiri for parsing HTML
+gem 'nokogiri'
+
 # Simple form for nice form styling
 gem 'simple_form'
 
