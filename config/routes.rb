@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :voyages
+  resources :voyages
   resources :ships
   devise_for :users
   get 'home/index'
