@@ -46,6 +46,9 @@ gem 'simple_form'
 # Devise for authentication
 gem 'devise'
 
+# Cancancan for ability
+gem 'cancancan', '~> 1.10'
+
 # For Heroku
 gem 'rails_12factor'
 

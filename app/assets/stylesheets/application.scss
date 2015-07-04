@@ -18,6 +18,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-a.btn:visited {
-	color: white;
+a:visited {
+	color: inherit;
 }

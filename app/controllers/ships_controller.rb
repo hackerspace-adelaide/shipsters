@@ -1,4 +1,5 @@
 class ShipsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_ship, only: [:show, :edit, :update, :destroy]
 
   # GET /ships

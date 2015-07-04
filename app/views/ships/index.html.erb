@@ -35,6 +35,8 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<% if can? :update, @ship %>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
             new_ship_path,
             :class => 'btn btn-primary' %>
+<% end %>
