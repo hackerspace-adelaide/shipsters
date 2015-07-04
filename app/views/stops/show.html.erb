@@ -13,6 +13,18 @@
       <dd><pre class="prettyprint"><%= @stop.arrival %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:departure) %></dt>
       <dd><pre class="prettyprint"><%= @stop.departure %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:embarked) %></dt>
+      <dd><pre class="prettyprint">
+        <% @stop.embarked.each do |p| %>
+          <%= p.name %>
+        <% end %>
+      </pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:disembarked) %></dt>
+      <dd><pre class="prettyprint">
+        <% @stop.disembarked.each do |p| %>
+          <%= p.name %>
+        <% end %>
+      </pre></dd>
   </dl>
 </div>
 

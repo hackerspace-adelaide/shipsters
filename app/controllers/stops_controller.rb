@@ -11,6 +11,8 @@ class StopsController < ApplicationController
   # GET /stops/1
   # GET /stops/1.json
   def show
+    @embarked = @stop.embarked
+    @disembarked = @stop.disembarked
   end
 
   # GET /stops/new
@@ -18,10 +20,16 @@ class StopsController < ApplicationController
     @stop = Stop.new
     @voyages = Voyage.all
     @ports = Port.all
+    @embarked = Passenger.all
+    @disembarked = Passenger.all
   end
 
   # GET /stops/1/edit
   def edit
+    @voyages = Voyage.all
+    @ports = Port.all
+    @embarked = Passenger.all
+    @disembarked = Passenger.all
   end
 
   # POST /stops

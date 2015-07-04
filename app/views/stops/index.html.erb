@@ -10,6 +10,8 @@
       <th><%= model_class.human_attribute_name(:port_id) %></th>
       <th><%= model_class.human_attribute_name(:arrival) %></th>
       <th><%= model_class.human_attribute_name(:departure) %></th>
+      <th><%= model_class.human_attribute_name(:embarked) %></th>
+      <th><%= model_class.human_attribute_name(:disembarked) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -18,10 +20,20 @@
     <% @stops.each do |stop| %>
       <tr>
         <td><%= stop.id %></td>
-          <td><%= stop.voyage_id %></td>
-          <td><%= stop.port_id %></td>
-          <td><%= stop.arrival %></td>
-          <td><%= stop.departure %></td>
+        <td><%= stop.voyage_id %></td>
+        <td><%= stop.port_id %></td>
+        <td><%= stop.arrival %></td>
+        <td><%= stop.departure %></td>
+        <td>
+          <% stop.embarked.each do |passenger| %>
+            <%= passenger.name %>
+          <% end %>
+        </td>
+        <td>
+          <% stop.disembarked.each do |passenger| %>
+            <%= passenger.name %>
+          <% end %>
+        </td>
         <td><%=l stop.created_at, format: :long %></td>
         <td>
           <%= link_to stop_path(stop), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
