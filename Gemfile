@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+ruby '2.2.2'
 gem 'rails', '4.2.3'
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -29,6 +30,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# Use Puma as the app server
+gem 'puma'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -44,6 +48,15 @@ gem 'simple_form'
 
 # Devise for authentication
 gem 'devise'
+
+# Cancancan for ability
+gem 'cancancan', '~> 1.10'
+
+group :production do
+	# For Heroku
+	gem 'rails_12factor'
+end
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
