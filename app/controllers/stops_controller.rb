@@ -15,6 +15,8 @@ class StopsController < ApplicationController
   # GET /stops/new
   def new
     @stop = Stop.new
+    @voyages = Voyage.all
+    @ports = Port.all
   end
 
   # GET /stops/1/edit

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :passengers
   resources :stops
   resources :ports
   resources :voyages
