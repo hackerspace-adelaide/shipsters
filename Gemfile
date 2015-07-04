@@ -34,6 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Twitter bootstrap for Rails
 gem 'bootstrap-sass', '~> 3.3.5'
+gem 'bootstrap-sass-extras'
 
 # Simple form for nice form styling
 gem 'simple_form'
