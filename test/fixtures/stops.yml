@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  voyage_id: 
+  port_id: 
+  arrival: 2015-07-04 16:30:49
+  departure: 2015-07-04 16:30:49
+
+two:
+  voyage_id: 
+  port_id: 
+  arrival: 2015-07-04 16:30:49
+  departure: 2015-07-04 16:30:49

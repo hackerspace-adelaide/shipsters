@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150704062122) do
+ActiveRecord::Schema.define(version: 20150704070049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ports", force: :cascade do |t|
+    t.string   "name"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ships", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +30,18 @@ ActiveRecord::Schema.define(version: 20150704062122) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "stops", force: :cascade do |t|
+    t.integer  "voyage_id"
+    t.integer  "port_id"
+    t.datetime "arrival"
+    t.datetime "departure"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "stops", ["port_id"], name: "index_stops_on_port_id", using: :btree
+  add_index "stops", ["voyage_id"], name: "index_stops_on_voyage_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -50,5 +70,7 @@ ActiveRecord::Schema.define(version: 20150704062122) do
 
   add_index "voyages", ["ship_id"], name: "index_voyages_on_ship_id", using: :btree
 
+  add_foreign_key "stops", "ports"
+  add_foreign_key "stops", "voyages"
   add_foreign_key "voyages", "ships"
 end

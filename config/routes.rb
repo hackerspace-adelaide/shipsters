@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :stops
+  resources :ports
   resources :voyages
   resources :voyages
   resources :ships
