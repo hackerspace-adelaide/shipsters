@@ -43,6 +43,8 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<% if can? :update, @passengers %>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
             new_passenger_path,
             :class => 'btn btn-primary' %>
+<% end %>

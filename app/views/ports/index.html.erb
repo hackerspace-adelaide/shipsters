@@ -37,6 +37,8 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<% if can? :update, @ports %>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
             new_port_path,
             :class => 'btn btn-primary' %>
+<% end %>

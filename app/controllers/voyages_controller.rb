@@ -1,4 +1,5 @@
 class VoyagesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_voyage, only: [:show, :edit, :update, :destroy]
 
   # GET /voyages
