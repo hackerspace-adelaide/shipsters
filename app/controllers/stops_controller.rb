@@ -80,6 +80,6 @@ class StopsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stop_params
-      params.require(:stop).permit(:voyage_id, :port_id, :arrival, :departure)
+      params.require(:stop).permit(:voyage_id, :port_id, :arrival, :departure, :embarked_ids => [], :disembarked_ids => [])
     end
 end

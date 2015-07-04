@@ -1,3 +1,3 @@
 class Port < ActiveRecord::Base
-	has_many :stops
+	belongs_to :stop
 end
