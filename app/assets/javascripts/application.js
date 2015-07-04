@@ -15,3 +15,5 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+
+window.setTimeout(function() { $(".alert").alert('close'); }, 4000);

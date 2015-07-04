@@ -25,8 +25,13 @@
           <!-- <li class="active"><a href="#">Home</a></li> -->
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Sign-in", new_user_session_path %></li>
-          <li><%= link_to "Sign-up", new_user_registration_path %></li>
+          <% if !current_user %>
+            <li><%= link_to "Sign-in", new_user_session_path %></li>
+            <li><%= link_to "Sign-up", new_user_registration_path %></li>
+          <% else %>
+            <li><%= link_to "Edit", edit_user_registration_path %></li>
+            <li><%= link_to "Sign-out", destroy_user_session_path, method: :delete %></li>
+          <% end %>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -37,7 +42,7 @@
     <%# Rails flash messages styled for Bootstrap 3.0 %>
     <% flash.each do |name, msg| %>
       <% if msg.is_a?(String) %>
-        <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
+        <div class="alert fade in alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
           <%= content_tag :div, msg, :id => "flash_#{name}" %>
         </div>
