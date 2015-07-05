@@ -6,6 +6,11 @@ class ShipsController < ApplicationController
   # GET /ships.json
   def index
     @ships = Ship.all
+
+    if params[:query].present?
+      @ships = Ship.search(params[:query]).records
+    end
+
   end
 
   # GET /ships/1

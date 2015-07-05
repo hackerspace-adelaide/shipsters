@@ -5,11 +5,10 @@ class PassengersController < ApplicationController
   # GET /passengers
   # GET /passengers.json
   def index
+    @passengers = Passenger.all
 
     if params[:query].present?
       @passengers = Passenger.search(params[:query]).records
-    else
-      @passengers = Passenger.all
     end
 
   end
