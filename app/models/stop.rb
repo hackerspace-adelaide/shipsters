@@ -1,5 +1,6 @@
 class Stop < ActiveRecord::Base
   belongs_to :voyage
+  belongs_to :port
 
   has_many :embarked_passengers
   has_many :disembarked_passengers
