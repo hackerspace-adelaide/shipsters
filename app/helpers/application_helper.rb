@@ -18,12 +18,4 @@ module ApplicationHelper
 		return stops_sorted.last
 	end
 
-	def embarked_ports_for_passenger(passenger)
-		EmbarkedPassenger.where(passenger_id: passenger.id)
-	end
-
-	def disembarked_ports_for_passenger(passenger)
-		DisembarkedPassenger.where(passenger_id: passenger.id)
-	end
-
 end

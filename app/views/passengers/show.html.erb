@@ -1,34 +1,46 @@
 <%- model_class = Passenger -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%= @passenger.name %></h1>
 </div>
 
 <div class="fieldset">
-  <dl>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
-      <dd><pre class="prettyprint"><%= @passenger.name %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:birthplace) %></dt>
-      <dd><pre class="prettyprint"><%= @passenger.birthplace %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:deathplace) %></dt>
-      <dd><pre class="prettyprint"><%= @passenger.deathplace %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:birthdate) %></dt>
-      <dd><pre class="prettyprint"><%= @passenger.birthdate.try(:strftime,"%d %B, %Y") %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:deathdate) %></dt>
-      <dd><pre class="prettyprint"><%= @passenger.deathdate.try(:strftime,"%d %B, %Y") %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:notability) %></dt>
-      <dd><pre class="prettyprint"><%= @passenger.notability %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:embarked) %></dt>
-      <dd><pre class="prettyprint">
-        <% embarked_ports_for_passenger(@passenger).each do |p| %>
-          <%= link_to ("Left " + p.stop.port.name + " on " + p.stop.departure.try(:strftime,"%d %B, %Y")), p.stop.port %>
+  <dl class="dl-horizontal">
+    <% if @passenger.birthplace? %>
+      <dt><%= model_class.human_attribute_name(:birthplace) %></dt>
+      <dd><%= @passenger.birthplace %></dd>
+    <% end %>
+    <% if @passenger.deathplace? %>
+      <dt><%= model_class.human_attribute_name(:deathplace) %></dt>
+      <dd><%= @passenger.deathplace %></dd>
+    <% end %>
+    <% if @passenger.birthdate? %>
+      <dt><%= model_class.human_attribute_name(:birthdate) %></dt>
+      <dd><%= @passenger.birthdate.try(:strftime,"%d %B, %Y") %></dd>
+    <% end %>
+    <% if @passenger.deathdate? %>
+      <dt><%= model_class.human_attribute_name(:deathdate) %></dt>
+      <dd><%= @passenger.deathdate.try(:strftime,"%d %B, %Y") %></dd>
+    <% end %>
+    <% if @passenger.notability? %>
+      <dt><%= model_class.human_attribute_name(:notability) %></dt>
+      <dd><%= @passenger.notability %></dd>
+    <% end %>
+    <% if @embarked_ports.size < 0 %>
+      <dt><%= model_class.human_attribute_name(:embarked) %></dt>
+      <dd>
+        <% @embarked_ports.each do |p| %>
+          <%= link_to ("Left " + p.stop.port.name + " on " + p.stop.departure.try(:strftime,"%d %B, %Y")), p.stop.port %><br>
         <% end %>
-      </pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:disembarked) %></dt>
-      <dd><pre class="prettyprint">
-        <% disembarked_ports_for_passenger(@passenger).each do |p| %>
+      </dd>
+    <% end %>
+    <% if @disembarked_ports.size < 0 %>
+      <dt><%= model_class.human_attribute_name(:disembarked) %></dt>
+      <dd>
+        <% @disembarked_ports.each do |p| %>
           <%= link_to ("Arrived in " + p.stop.port.name + " on " + p.stop.departure.try(:strftime,"%d %B, %Y")), p.stop.port %>
         <% end %>
-      </pre></dd>
+      </dd>
+    <% end %>
   </dl>
 </div>
 
