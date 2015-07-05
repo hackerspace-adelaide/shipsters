@@ -27,7 +27,7 @@
         <td><%= ship.launched.try(:strftime,"%d %B, %Y") %></td>
         <td>
           <% ship.voyages.each do |v| %>
-              <%= link_to voyage_start(v).port.name, voyage_start(v) %> to <%= link_to voyage_stop(v).port.name, voyage_stop(v) %>
+              <%= link_to voyage_start(v).try(:port).name, voyage_start(v) %> to <%= link_to voyage_stop(v).try(:port).name, voyage_stop(v) %>
           <% end %>
         </td>
         <% if current_user and current_user.admin? %>

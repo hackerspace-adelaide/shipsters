@@ -7,6 +7,7 @@ namespace :theshiplist do
     print args.url, ":\n"
     # find the first font tag containing a single strong tag
     desc = doc.xpath("(//font[count(.//strong)=1])[1]")
+    desc_text = desc.xpath("//text()").collect{|x| x.text}.join(" ").gsub("\n"," ").gsub(/ +/," ")
 
     shipname = desc.xpath("strong//text()").collect{|x| x.text}.join(" ").gsub("\n"," ").gsub(/ +/," ")
     print shipname,"\n"
@@ -14,22 +15,24 @@ namespace :theshiplist do
     shiptype = desc.xpath("strong/preceding-sibling::text()")
     print shiptype,"\n"
 
-    remaining = desc.xpath("strong/following-sibling::text()").collect{|x| x.text}.join(" ").gsub("\n"," ").gsub(/ +/," ")
+    remaining = desc.xpath("strong/following-sibling::node()/descendant-or-self::text()").collect{|x| x.text}.join(" ").gsub("\n"," ").gsub(/ +/," ")
     print remaining,"\n"
 
     tonnage = remaining[/(\d+) ton/,1]
     print tonnage,"\n"
 
-    m = /from ([^0-9]+)([^,]+)/.match(remaining)
+    m = /from ([^0-9]+)(.+? \d\d\d\d)/.match(desc_text)
     from = m[1]
+    print "raw from date: ", m[2], "\n"
     from_date = Date.parse(m[2])
 
     print from,"\n"
     print from_date,"\n"
 
     
-    m = /arrived at ([^0-9]+)([^,]+)/.match(remaining)
+    m = /arrived at ([^0-9]+)(.+? \d\d\d\d)/.match(desc_text)
     to = m[1]
+    print "raw to date: ", m[2], "\n"
     to_date = Date.parse(m[2])
     print to,"\n"
     print to_date,"\n"

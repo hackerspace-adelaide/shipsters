@@ -26,7 +26,7 @@
       <dt class="label label-default"><%= model_class.human_attribute_name(:disembarked) %></dt>
       <dd><pre class="prettyprint">
         <% disembarked_ports_for_passenger(@passenger).each do |p| %>
-          <%= link_to ("Arrived in " + p.stop.port.name + " on " + p.stop.departure.try(:strftime,"%d %B, %Y")), p.stop.port %>
+          <%= link_to ("Arrived in " + p.stop.port.name + " on " + p.stop.arrival.try(:strftime,"%d %B, %Y")), p.stop.port %>
         <% end %>
       </pre></dd>
   </dl>
