@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150704105446) do
+ActiveRecord::Schema.define(version: 20150705051441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 20150704105446) do
 
   add_index "embarked_passengers", ["passenger_id"], name: "index_embarked_passengers_on_passenger_id", using: :btree
   add_index "embarked_passengers", ["stop_id"], name: "index_embarked_passengers_on_stop_id", using: :btree
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "passengers", force: :cascade do |t|
     t.string   "name"
@@ -60,6 +68,7 @@ ActiveRecord::Schema.define(version: 20150704105446) do
     t.date     "launched"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image"
   end
 
   create_table "stops", force: :cascade do |t|
