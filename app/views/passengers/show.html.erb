@@ -25,7 +25,7 @@
       <dt><%= model_class.human_attribute_name(:notability) %></dt>
       <dd><%= @passenger.notability %></dd>
     <% end %>
-    <% if @embarked_ports.size < 0 %>
+    <% if @embarked_ports.size > 0 %>
       <dt><%= model_class.human_attribute_name(:embarked) %></dt>
       <dd>
         <% @embarked_ports.each do |p| %>
@@ -33,7 +33,7 @@
         <% end %>
       </dd>
     <% end %>
-    <% if @disembarked_ports.size < 0 %>
+    <% if @disembarked_ports.size > 0 %>
       <dt><%= model_class.human_attribute_name(:disembarked) %></dt>
       <dd>
         <% @disembarked_ports.each do |p| %>
