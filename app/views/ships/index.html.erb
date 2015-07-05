@@ -23,11 +23,11 @@
         <% if current_user and current_user.admin? %>
           <td><%= ship.id %></td>
         <% end %>
-        <td><%= ship.name %></td>
-        <td><%= ship.launched %></td>
+        <td><%= link_to ship.name, ship %></td>
+        <td><%= ship.launched.try(:strftime,"%d %B, %Y") %></td>
         <td>
           <% ship.voyages.each do |v| %>
-              <%= voyage_start_stop(v) %>
+              <%= link_to voyage_start(v).port.name, voyage_start(v) %> to <%= link_to voyage_stop(v).port.name, voyage_stop(v) %>
           <% end %>
         </td>
         <% if current_user and current_user.admin? %>

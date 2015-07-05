@@ -12,22 +12,36 @@
       <dt class="label label-default"><%= model_class.human_attribute_name(:deathplace) %></dt>
       <dd><pre class="prettyprint"><%= @passenger.deathplace %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:birthdate) %></dt>
-      <dd><pre class="prettyprint"><%= @passenger.birthdate %></pre></dd>
+      <dd><pre class="prettyprint"><%= @passenger.birthdate.try(:strftime,"%d %B, %Y") %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:deathdate) %></dt>
-      <dd><pre class="prettyprint"><%= @passenger.deathdate %></pre></dd>
+      <dd><pre class="prettyprint"><%= @passenger.deathdate.try(:strftime,"%d %B, %Y") %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:notability) %></dt>
       <dd><pre class="prettyprint"><%= @passenger.notability %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:embarked) %></dt>
+      <dd><pre class="prettyprint">
+        <% embarked_ports_for_passenger(@passenger).each do |p| %>
+          <%= link_to ("Left " + p.stop.port.name + " on " + p.stop.departure.try(:strftime,"%d %B, %Y")), p.stop.port %>
+        <% end %>
+      </pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:disembarked) %></dt>
+      <dd><pre class="prettyprint">
+        <% disembarked_ports_for_passenger(@passenger).each do |p| %>
+          <%= link_to ("Arrived in " + p.stop.port.name + " on " + p.stop.departure.try(:strftime,"%d %B, %Y")), p.stop.port %>
+        <% end %>
+      </pre></dd>
   </dl>
 </div>
 
-<div class="form-group">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              passengers_path, :class => 'btn btn-default'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_passenger_path(@passenger), :class => 'btn btn-default' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              passenger_path(@passenger),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
+<% if current_user and current_user.admin? %>
+  <div class="form-group">
+    <%= link_to t('.back', :default => t("helpers.links.back")),
+                passengers_path, :class => 'btn btn-default'  %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_passenger_path(@passenger), :class => 'btn btn-default' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                passenger_path(@passenger),
+                :method => 'delete',
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                :class => 'btn btn-danger' %>
+  </div>
+<% end %>
