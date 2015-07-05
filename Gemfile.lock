@@ -85,6 +85,8 @@ GEM
     execjs (2.5.2)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    figaro (1.1.1)
+      thor (~> 0.14)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     hashie (3.4.2)
@@ -97,6 +99,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    leaflet-rails (0.7.4)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -199,8 +202,10 @@ DEPENDENCIES
   devise
   elasticsearch-model
   elasticsearch-rails
+  figaro
   jbuilder (~> 2.0)
   jquery-rails
+  leaflet-rails
   nokogiri
   pg
   puma

@@ -56,6 +56,12 @@ gem 'cancancan', '~> 1.10'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
+# Leaflet JS for maps
+gem 'leaflet-rails'
+
+# Figaro for sensitive settings
+gem 'figaro'
+
 group :production do
 	# For Heroku
 	gem 'rails_12factor'

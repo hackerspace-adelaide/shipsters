@@ -12,6 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= require leaflet
+ *= depend_on_asset "layers.png"
+ *= depend_on_asset "layers-2x.png"
  */
 
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
@@ -28,4 +31,11 @@ a:visited {
 	-ms-transform: rotate(-15deg); /* IE 9 */
   -webkit-transform: rotate(-15deg); /* Chrome, Safari, Opera */
   transform: rotate(-15deg);
+}
+
+.page-header h2 {
+	font-weight: normal;
+	font-size: 1em;
+	opacity: 0.8;
+	margin-top: 0px;
 }

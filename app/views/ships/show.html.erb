@@ -1,8 +1,12 @@
 <%- model_class = Ship -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+<div class="page-header ship">
+  <h1><%= @ship.name %></h1>
+  <h2>Launched in <%= @ship.launched.try(:strftime,"%Y") %></h2>
 </div>
 
+<%= link_to image_tag(@ship.image, class: 'ship-image'), @ship.image %>
+
+<% if current_user and current_user.admin? %>
 <div class="fieldset">
   <dl>
       <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
@@ -12,7 +16,6 @@
   </dl>
 </div>
 
-<% if current_user and current_user.admin? %>
   <div class="form-group">
     <%= link_to t('.back', :default => t("helpers.links.back")),
                 ships_path, :class => 'btn btn-default'  %>

@@ -16,6 +16,8 @@ class PassengersController < ApplicationController
   # GET /passengers/1
   # GET /passengers/1.json
   def show
+    @embarked_ports = embarked_ports_for_passenger(@passenger)
+    @disembarked_ports = disembarked_ports_for_passenger(@passenger)
   end
 
   # GET /passengers/new
@@ -76,5 +78,13 @@ class PassengersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def passenger_params
       params.require(:passenger).permit(:name, :birthplace, :deathplace, :birthdate, :deathdate, :notability)
+    end
+
+    def embarked_ports_for_passenger(passenger)
+      EmbarkedPassenger.where(passenger_id: passenger.id)
+    end
+
+    def disembarked_ports_for_passenger(passenger)
+      DisembarkedPassenger.where(passenger_id: passenger.id)
     end
 end

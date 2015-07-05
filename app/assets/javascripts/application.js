@@ -15,5 +15,20 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+//= require leaflet
 
 window.setTimeout(function() { $(".alert").alert('close'); }, 4000);
+
+var map_bottom_margin = -30
+if ($(window).width() > 767) {
+  map_bottom_margin = 20;
+}
+
+$(function() {
+    $(window).resize(function() {
+        if ($('#map').length > 0) {
+        	$('#map').height($(window).height() - ($('#map').offset().top + map_bottom_margin));
+        }
+    });
+    $(window).resize();
+});
