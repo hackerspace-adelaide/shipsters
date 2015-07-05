@@ -23,12 +23,20 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li><%= link_to "Ships", ships_path %></li>
-          <li><%= link_to "Voyages", voyages_path %></li>
-          <li><%= link_to "Stops", stops_path %></li>
-          <li><%= link_to "Ports", ports_path %></li>
+          <% if current_user and current_user.admin? %>
+            <li><%= link_to "Voyages", voyages_path %></li>
+            <li><%= link_to "Stops", stops_path %></li>
+            <li><%= link_to "Ports", ports_path %></li>
+          <% end %>
           <li><%= link_to "Passengers", passengers_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <form class="navbar-form navbar-left" role="search" accept-charset="UTF-8" action="/passengers" method="get">
+            <div class="form-group">
+              <input name="utf8" type="hidden" value="&#x2713;" />
+              <input type="text" class="form-control" placeholder="Passenger search" id="query" name="query">
+            </div>
+          </form>
           <% if !current_user %>
             <li><%= link_to "Sign-in", new_user_session_path %></li>
             <li><%= link_to "Sign-up", new_user_registration_path %></li>

@@ -49,6 +49,10 @@ gem 'devise'
 # Cancancan for ability
 gem 'cancancan', '~> 1.10'
 
+# Elastic Search
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
 group :production do
 	# For Heroku
 	gem 'rails_12factor'
