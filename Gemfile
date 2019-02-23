@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '2.5.1'
+ruby '2.5.3'
 gem 'rails', '4.2.11'
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -37,7 +37,7 @@ gem 'puma'
 # gem 'capistrano-rails', group: :development
 
 # Twitter bootstrap for Rails
-gem 'bootstrap-sass', '~> 3.3.5'
+gem 'bootstrap-sass'#, '~> 3.3.5'
 gem 'bootstrap-sass-extras'
 
 # Nokogiri for parsing HTML
